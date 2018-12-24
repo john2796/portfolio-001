@@ -31,7 +31,7 @@ const Routes = (props) => {
         </Switch>
         <Contact />
 
-        <MapContainer />
+        {/* <MapContainer /> */}
         <Footer />
       </div>
 

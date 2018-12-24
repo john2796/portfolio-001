@@ -84,13 +84,12 @@ width: 89%;
 }
 
 .carousel__indicator {
-  display: block;
   width: 13px;
-  height: 13px;
+    height: 13px;
     border-radius: 50%;
-  background-color: #111;
-  cursor: pointer;
-  opacity: .15;
+    background: transparent;
+    margin: 1px 4px;
+    border: 2px solid #C8C7C6;
   transition: opacity .15s cubic-bezier(.4, 0, 1, 1);
 
   &:hover {
@@ -100,7 +99,8 @@ width: 89%;
   &--active {
     &,
     &:hover {
-      opacity: .75;
+      background: #C8C7C6;
+    border-color: #C8C7C6;
     }
   }
 }

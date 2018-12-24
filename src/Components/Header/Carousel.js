@@ -9,20 +9,25 @@ import image02 from '../../assets/homecarousel/hom2.jpg'
 import image03 from '../../assets/homecarousel/hom3.jpg'
 
 
-const HeaderMainStyle = styled.section`
 
+const HeaderMainStyle = styled.section`
+@import url('https://fonts.googleapis.com/css?family=Oswald:200&subset=cyrillic');
+width: 100%;
+height: 100vh;
+border: 1px solid red;
+margin-top: -90px;
+
+background: gray;
   .carousel__content { 
     font-size: 5rem;
     color: white;
-    z-index: 999;
-    width: 100%;
-    text-align: center;
-    margin-top: 300px;
-    height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
     align-items: center;
     .carousel__fine_dinning  { 
+        margin-top: 200px;
         max-width: 100%;
         width: 335px;
         height: auto;
@@ -38,8 +43,8 @@ const HeaderMainStyle = styled.section`
     font-family: 'Oswald', sans-serif;
     font-size: 6.5rem;
     text-align: center;
-    color: var(--white);
-    font-weight: 300;
+    color: #FFFFFF;
+    font-weight: 200;
     text-transform: uppercase;
     letter-spacing: 4px;
     margin: 70px 0 30px 0;
@@ -47,13 +52,14 @@ const HeaderMainStyle = styled.section`
 
     p { 
       font-size: 2rem;
-        font-style: italic;
-        color: var(--white);
-        font-weight: 300;
-        font-family: 'Libre Baskerville', serif;
-        width: 100%;
-        /* will have to change marginbottom later with media queries */
-        margin-bottom: 120px;
+    font-style: italic;
+    color: var(--white);
+    text-align: center;
+    font-weight: 300;
+    font-family: 'Libre Baskerville', serif;
+    width: 100%;
+    margin-bottom: 120px;
+    margin-top: 30px;
     }
 
 
@@ -83,7 +89,6 @@ const HeaderMainStyle = styled.section`
   }
   /* the buttons and the fine dinning image is wrap here  */
   .carousel__controls_wrapper { 
-      
         display: flex;
         width: 100%;
         justify-content: space-between;
@@ -126,13 +131,10 @@ const HeaderMainStyle = styled.section`
     
    .slide {
      display: none;
+     height: 100%;
     }
    .active { 
      display: block;
-   }
-
-   .slider__bg{ 
-     border: 1px solid red;
      height: 100%;
      background-size:cover;
      background-position: center;
@@ -142,29 +144,46 @@ const HeaderMainStyle = styled.section`
 
 const items = [
   {
-    src: { image01 },
+    src: image01,
     caption: 'The Soul Food & Bistro'
   },
   {
-    src: { image02 },
+    src: image02,
     caption: 'Welcome to Restaurant'
   },
   {
-    src: { image03 },
+    src: image03,
     caption: 'Elixir Exclusively Food'
   }
 ]
 
 
 class Carousel extends Component {
-  state = {
-    activeIndex: 0,
+  _isMounted = false;
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeIndex: 0
+    }
   }
+
   componentDidMount = () => {
-    window.setInterval(() => {
-      this.next();
-    }, 4000);
+    this._isMounted = true;
+    if (this._isMounted) {
+      console.log('MAIN carousel did mount')
+      setInterval(() => {
+        this.next();
+      }, 4000);
+    }
   }
+
+  componentWillUnmount = () => {
+    console.log('MAIN carousel Will UnMount');
+    this._isMounted = false;
+  }
+
+
 
   //carouse control
   next = () => {
@@ -187,35 +206,34 @@ class Carousel extends Component {
       // check if the index is equal to currentIndex if it is add className
       let computedClass = index === activeIndex ? 'slide active' : 'slide';
       return (
-        <section className={computedClass} key={index}>
-          {/* this is where we initializing images */}
-          <div className="slider__bg"
-            style={{
-              backgroundImage: `url${src}`
-            }}
-          >
-            <div className="carousel__content">
-              <div className="carousel__controls_wrapper">
-                {/* left carousel button */}
-                <button className="carousel__left_btn" onClick={this.previous}>
-                  <i className="fas fa-caret-left"></i>
-                </button>
-                {/* big image within jumbotron */}
-                <img className="carousel__fine_dinning" src={logoIntro} alt="fine dinning" />
-                <button className="carousel__right_btn" onClick={this.next}>
-                  <i className="fas fa-caret-right"></i>
-                </button>
-              </div>
-              {/* big title  */}
-              <h2 className="carousel__caption">{caption}</h2>
-              {/* gold arrow  */}
-              <img className="carousel__arrow" src={sideSeparator} alt="arrow" />
-              <p>The Chef creates divine combinations</p>
-              {/* still need to work on animation of going down arrow */}
-              <a className="carousel__go-down" href="#about">
-                <i className="fas fa-angle-down"></i>
-              </a>
+        <section
+          className={computedClass}
+          key={index}
+          style={
+            computedClass ? { backgroundImage: `url(${src})` } : null
+          }
+        >
+          <div className="carousel__content">
+            <div className="carousel__controls_wrapper">
+              {/* left carousel button */}
+              <button className="carousel__left_btn" onClick={this.previous}>
+                <i className="fas fa-caret-left"></i>
+              </button>
+              {/* big image within jumbotron */}
+              <img className="carousel__fine_dinning" src={logoIntro} alt="fine dinning" />
+              <button className="carousel__right_btn" onClick={this.next}>
+                <i className="fas fa-caret-right"></i>
+              </button>
             </div>
+            {/* big title  */}
+            <h2 className="carousel__caption">{caption}</h2>
+            {/* gold arrow  */}
+            <img className="carousel__arrow" src={sideSeparator} alt="arrow" />
+            <p>The Chef creates divine combinations</p>
+            {/* still need to work on animation of going down arrow */}
+            <a className="carousel__go-down" href="#about">
+              <i className="fas fa-angle-down"></i>
+            </a>
           </div>
           {/* carousel content wrapper */}
         </section>

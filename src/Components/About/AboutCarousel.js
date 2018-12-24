@@ -33,15 +33,31 @@ const items = [
 
 
 class AboutCarousel extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
       activeIndex: 0,
     }
-    window.setInterval(() => {
-      this.next();
-    }, 3500);
   }
+
+  componentDidMount = () => {
+    this._isMounted = true;
+    if (this._isMounted) {
+      console.log('about carousel did mount')
+      setInterval(() => {
+        this.next();
+      }, 3500);
+    }
+  }
+
+  componentWillUnmount = () => {
+    console.log('about carousel Will UnMount');
+
+    this._isMounted = false;
+  }
+
+
 
   next = () => {
     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;

@@ -12,9 +12,23 @@ const MapWrapper = styled.div`
 `
 
 export class MapContainer extends Component {
+  _isMounted = false;
+
+  componentDidMount = () => {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount = () => {
+    this._isMounted = false
+  }
+
+
+
+
   render() {
-    return (
-      <MapWrapper>
+    let map = null;
+    if (this._isMounted) {
+      map = (
         <Map google={this.props.google}
           zoom={14}
           className="map"
@@ -34,6 +48,11 @@ export class MapContainer extends Component {
             </div>
           </InfoWindow>
         </Map>
+      )
+    }
+    return (
+      <MapWrapper>
+        {map}
       </MapWrapper >
     );
   }

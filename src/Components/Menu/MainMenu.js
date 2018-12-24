@@ -93,6 +93,9 @@ const MainMenuWrapper = styled.div`
     font-size: 2.6rem;
     text-align: center;
     margin-top: 15px;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing:2px;
     }
     img {
     display: block;
@@ -120,7 +123,7 @@ class MainMenu extends Component {
         {/* Steaks */}
         <div className="wrapper">
           <div className="main__menu__content">
-            <h2>Steak</h2>
+            <h2>Steaks</h2>
             <p>Exclusive and delicious beef</p>
             <img src={mainMenu03} alt="..." />
           </div>
@@ -141,7 +144,7 @@ class MainMenu extends Component {
         {/* Salads */}
         <div className="wrapper">
           <div className="main__menu__content">
-            <h2>Salad</h2>
+            <h2>Salads</h2>
             <p>Exclusive and delicious beef</p>
             <img src={mainMenu02} alt="..." />
           </div>

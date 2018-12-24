@@ -68,10 +68,6 @@ const AboutUsWrapper = styled.section`
 
 
 class AboutUs extends Component {
-  state = {
-  }
-
-
   render() {
     return (
       <React.Fragment>
