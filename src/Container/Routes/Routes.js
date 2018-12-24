@@ -30,7 +30,6 @@ const Routes = (props) => {
           <Route component={NotFound} />
         </Switch>
         <Contact />
-
         {/* <MapContainer /> */}
         <Footer />
       </div>

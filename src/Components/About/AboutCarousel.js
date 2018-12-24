@@ -45,7 +45,7 @@ class AboutCarousel extends Component {
     this._isMounted = true;
     if (this._isMounted) {
       console.log('about carousel did mount')
-      setInterval(() => {
+      this.interval = window.setInterval(() => {
         this.next();
       }, 3500);
     }
@@ -55,6 +55,7 @@ class AboutCarousel extends Component {
     console.log('about carousel Will UnMount');
 
     this._isMounted = false;
+    clearInterval(this.interval);
   }
 
 

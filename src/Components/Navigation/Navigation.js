@@ -22,8 +22,16 @@ const NavigationWrapper = styled.div`
 
  a { 
   padding: 40px 0;
-  color: var(--white);
   margin-left: 37px;
+
+  color: #fff;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    line-height: 6px;
+    border-bottom: 3px solid transparent;
+    text-shadow: 0px 0px 1px transparent;
 
 
   &:hover { 

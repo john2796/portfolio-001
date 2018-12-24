@@ -14,7 +14,6 @@ const HeaderMainStyle = styled.section`
 @import url('https://fonts.googleapis.com/css?family=Oswald:200&subset=cyrillic');
 width: 100%;
 height: 100vh;
-border: 1px solid red;
 margin-top: -90px;
 
 background: gray;
@@ -52,10 +51,10 @@ background: gray;
 
     p { 
       font-size: 2rem;
-    font-style: italic;
-    color: var(--white);
-    text-align: center;
-    font-weight: 300;
+      color: var(--white);
+      text-align: center;
+      font-weight: 400;
+      font-style: italic;
     font-family: 'Libre Baskerville', serif;
     width: 100%;
     margin-bottom: 120px;
@@ -159,6 +158,7 @@ const items = [
 
 
 class Carousel extends Component {
+  // PREVENT MEMORY LEAKAGE by unmounting interval
   _isMounted = false;
   constructor(props) {
     super(props);
@@ -172,7 +172,7 @@ class Carousel extends Component {
     this._isMounted = true;
     if (this._isMounted) {
       console.log('MAIN carousel did mount')
-      setInterval(() => {
+      this.interval = window.setInterval(() => {
         this.next();
       }, 4000);
     }
@@ -181,6 +181,7 @@ class Carousel extends Component {
   componentWillUnmount = () => {
     console.log('MAIN carousel Will UnMount');
     this._isMounted = false;
+    clearInterval(this.interval);
   }
 
 
