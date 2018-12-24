@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { device } from '../../Theme/MediaQueries';
+import NavItems from './NavItems';
 
 const NavigationWrapper = styled.div`
 .wrapper { 
@@ -17,6 +17,7 @@ const NavigationWrapper = styled.div`
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
+    color: red;
     
   .active{ 
     color: var(--gold);
@@ -40,10 +41,7 @@ const NavigationWrapper = styled.div`
       font-size:1.1rem;
       margin-left: 22px;
     }
-    @media ${device.tablet}{
-      color: red;
-      display: none;
-    }
+    
     
 
   &:hover { 
@@ -58,7 +56,6 @@ const NavigationWrapper = styled.div`
     font-family: 'Oswald', sans-serif;
     font-weight:300;
     @media ${device.tablet}{
-      color: red;
       display: block;
      }
     } 
@@ -72,28 +69,31 @@ const NavigationWrapper = styled.div`
   display: none;
 }
 
-@media ${device.tablet}{
-  .navigation__btn {
-  display: block;
-}
-  .open {
-  display: block;
-  color: orange;
-  display: block;
-  position: relative;
-  left: 0;
-  width: 100%;
-  top:100;
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.close {
+.tablet {
   display: none;
 }
+/* tablet */
+@media ${device.tablet}{
+.tablet {
+  display: block;
+  display: flex;
+
+  .nav__item {
+    color:red;
+  }
 }
+  .desktop {
+    display: none;
+  }
+  .navigation__btn {
+    display: block;
+  }
+  .close {
+    display: none;
+  }
+}
+
+
 `
 
 class Navigation extends Component {
@@ -110,56 +110,24 @@ class Navigation extends Component {
   }
 
 
+
   render() {
     const { isOpen } = this.state
     let toggle = isOpen ? 'open' : 'close';
     return (
+
       <NavigationWrapper>
         <nav>
-          <div className="wrapper">
-            <NavLink
-              to="/"
-              exact
-              activeClassName="active"
-            >Miranda</NavLink>
-            <NavLink
-              to="/"
-              exact
-              activeClassName="active"
-              className={toggle}
-            >Home</NavLink>
-            <NavLink
-              to="/about"
-              activeClassName="active" className="nav__item"
-              className={toggle}
-            >About</NavLink>
-            <NavLink
-              to="/menu"
-              activeClassName="active"
-              className="nav__item"
-              className={toggle}
-            >Menu</NavLink>
-            <NavLink
-              to="/gallery"
-              activeClassName="active" className="nav__item"
-              className={toggle}
-            >Gallery</NavLink>
-            <NavLink
-              to="/reservation"
-              activeClassName="active"
-              className="nav__item"
-              className={toggle}
-            >Reservations</NavLink>
-            <NavLink
-              to="/location"
-              activeClassName="active" className="nav__item"
-              className={toggle}
-            >Location</NavLink>
-            <span
-              className="navigation__btn"
-              onClick={this.toggleHamburger}
-            >x</span>
-          </div>
+          <NavItems
+            className={`nav__item`}
+            navClass="wrapper desktop"
+            toggleHamburger={this.toggleHamburger}
+          />
+          <NavItems
+            className={`${toggle} nav__item`}
+            navClass="wrapper tablet"
+            toggleHamburger={this.toggleHamburger}
+          />
         </nav>
       </NavigationWrapper >
 
