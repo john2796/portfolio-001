@@ -171,15 +171,15 @@ class Carousel extends Component {
   componentDidMount = () => {
     this._isMounted = true;
     if (this._isMounted) {
-      console.log('MAIN carousel did mount')
       this.interval = window.setInterval(() => {
         this.next();
+        console.log('next', this.next.length)
       }, 4000);
     }
+
   }
 
   componentWillUnmount = () => {
-    console.log('MAIN carousel Will UnMount');
     this._isMounted = false;
     clearInterval(this.interval);
   }

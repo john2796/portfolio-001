@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { device } from '../../Theme/MediaQueries';
 
 const NavigationWrapper = styled.div`
 .wrapper { 
@@ -32,7 +33,10 @@ const NavigationWrapper = styled.div`
     line-height: 6px;
     border-bottom: 3px solid transparent;
     text-shadow: 0px 0px 1px transparent;
-
+    @media ${device.laptop}{
+      font-size:1.1rem;
+      margin-left: 22px;
+    }
 
   &:hover { 
     color: var(--gold)!important;
