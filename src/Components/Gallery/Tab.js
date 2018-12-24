@@ -58,7 +58,7 @@ class Tabs extends Component {
                 key={i}
                 className={isActive}
                 onClick={() => {
-                  onChange(child.itm);
+                  onChange(child.key);
                 }}
               >
                 {child}

@@ -122,10 +122,10 @@ class Gallery extends Component {
             onChange={active => this.setState({ active })}
             onClick={this.shuffle}
           >
-            <span itm="all" >All Photos</span>
-            <span itm="food">Food</span>
-            <span itm="restaurant">Restaurant</span>
-            <span itm="desserts">Desserts</span>
+            <span key="all" >All Photos</span>
+            <span key="food">Food</span>
+            <span key="restaurant">Restaurant</span>
+            <span key="desserts">Desserts</span>
           </Tabs>
 
           <div className="content">{content[active]}</div>
