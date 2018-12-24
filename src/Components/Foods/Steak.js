@@ -91,8 +91,9 @@ const primesteak = [
 
 const Steak = () => (
   primesteak.map(({ caption, ingredients, price }, index) => (
-    <SteakWrapper>
-      <div className="items" key={index}>
+
+    <SteakWrapper key={index}>
+      <div className="items">
         <h3 className="menu__caption">
           {caption}
         </h3>
@@ -101,7 +102,6 @@ const Steak = () => (
           <p className="menu__price">{price}</p>
         </div>
       </div>
-
     </SteakWrapper >
   ))
 )
