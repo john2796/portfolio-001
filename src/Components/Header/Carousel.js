@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import logoIntro from '../../assets/home/logo_intro.png'
 import sideSeparator from '../../assets/home/side-separator.png'
+import { device } from '../../Theme/MediaQueries';
 
 //slider images
 import image01 from '../../assets/homecarousel/home1.jpg'
@@ -35,7 +36,7 @@ background: gray;
         max-width: 100%;
         width: 100px;
         height: auto;
-        margin: 20px 0;
+        margin: 5px 0;
     }
 
   h2 { 
@@ -47,6 +48,9 @@ background: gray;
     text-transform: uppercase;
     letter-spacing: 4px;
     margin: 70px 0 30px 0;
+    @media ${device.laptopS}{
+      font-size: 3.5rem;
+    }
   }
 
     p { 
@@ -59,6 +63,10 @@ background: gray;
     width: 100%;
     margin-bottom: 120px;
     margin-top: 30px;
+
+    @media ${device.laptopS}{
+      font-size: 1.6rem;
+     }
     }
 
 
@@ -91,6 +99,9 @@ background: gray;
         display: flex;
         width: 100%;
         justify-content: space-between;
+        @media ${device.laptopS}{
+          justify-content: center;
+        }
         .carousel__left_btn,
         .carousel__right_btn{ 
           /* align-self: auto | flex-start | flex-end | center | baseline | stretch; */
@@ -110,6 +121,10 @@ background: gray;
         color: gray;
         border-radius:50%;
         outline: none;
+
+        @media ${device.laptopS}{
+          display: none;
+        }
 
           &:hover {
              opacity: 1;

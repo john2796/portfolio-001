@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { device } from '../../Theme/MediaQueries'
 
 import menuLogo from '../../assets/home/menu_logo.png';
 import Steak from '../Foods/Steak';
@@ -19,6 +20,9 @@ const MenuWrapper = styled.div`
   .menu__flex { 
     display: flex; 
     justify-content: space-between;
+    @media ${device.laptop}{
+        flex-direction: column;
+      }
 
 
     .menu__title { 
@@ -26,7 +30,7 @@ const MenuWrapper = styled.div`
      text-transform: uppercase;   
       color: var(--darkGold);
       font-family: "Oswald", sans-serif;
-      font-size: 24px;
+      font-size: 2.4rem;
       font-weight: 400;
       margin-bottom: 33px;
       }
@@ -35,38 +39,54 @@ const MenuWrapper = styled.div`
 
 
   .menu__item .items {
-    width: 300px;
+    width: 260px;
+    @media ${device.laptop}{
+         width:100%;
+        }
+  
     /* border: 1px solid red; */
     margin-bottom: -40px;
       .menu__caption { 
       text-transform: uppercase;
       font-family: "Cabin", sans-serif;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 1.5rem;
       color: #0c0901;
       margin-bottom: 10px;
       text-align: left;
+      @media ${device.laptop}{
+          font-size: 1.6rem;
+        }
     }
     .menu__item__flex {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-top: -14px;
+      @media ${device.laptop}{
+         width:100%;
+        }
     
 
     .menu__ingredients { 
-      font-size: 13px;
+      font-size: 1.3rem;
       text-transform: none;
       font-weight: 400;
       color: #484745;
+      @media ${device.laptop}{
+         font-size: 1.6rem;
+        }
     }
 
     .menu__price { 
       font-family: "Cabin", sans-serif;
       font-weight: 700;
       font-style: italic;
-      font-size: 14px;
+      font-size: 1.4rem;
       color: #bfa760;
+      @media ${device.laptop}{
+        font-size: 1.8rem;
+     }
     }
    }
   }
