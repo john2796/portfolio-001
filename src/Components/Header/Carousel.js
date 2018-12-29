@@ -212,15 +212,12 @@ class Carousel extends Component {
     this.setState({ activeIndex: nextIndex });
   }
 
-
-
-
   render() {
     const { activeIndex } = this.state
     // first param deconstruct item of object second is the length
     const slides = items.map(({ src, caption }, index) => {
       // check if the index is equal to currentIndex if it is add className
-      let computedClass = index === activeIndex ? 'slide active' : 'slide';
+      let computedClass = index === activeIndex ? "slide active" : "slide";
       return (
         <section
           className={computedClass}

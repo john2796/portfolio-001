@@ -103,9 +103,7 @@ width: 89%;
     border-color: #C8C7C6;
     }
   }
-}
-
-   
+}  
 `
 
 // Images
@@ -132,7 +130,6 @@ class KitchenCarousel extends Component {
     }
   }
 
-
   next = () => {
     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
@@ -146,7 +143,6 @@ class KitchenCarousel extends Component {
   goToSlide(newIndex) {
     this.setState({ activeIndex: newIndex });
   }
-
 
   render() {
     const { activeIndex } = this.state;

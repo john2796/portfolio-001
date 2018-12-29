@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { device } from '../../Theme/MediaQueries';
+import { NavLink } from 'react-router-dom';
 import NavItems from './NavItems';
 
 const NavigationWrapper = styled.div`
+max-width:90%;
+margin: 0 auto;
 .wrapper { 
   display: flex;
   align-items:center;  
@@ -62,38 +65,31 @@ const NavigationWrapper = styled.div`
   }
 }
 
-.navigation__btn {
-  color: white;
-  font-size:4rem;
-  cursor:pointer;
-  display: none;
-}
-
 .tablet {
   display: none;
 }
 /* tablet */
 @media ${device.tablet}{
-.tablet {
-  display: block;
+  .desktop__navigation {display: none}
+  .tablet__navigation {
+    display: flex;
+    align-items:center;
+  }
+.navigation__btn {
+  color: white;
+  font-size:4rem;
+  cursor:pointer;
+ }
+ .close{display:none}
+}
+.nav__wrapper {
+  position: absolute;
+  background: gray;
+  color: gray;
   display: flex;
-
-  .nav__item {
-    color:red;
-  }
+  flex-direction: column;
+  width: 100%;
 }
-  .desktop {
-    display: none;
-  }
-  .navigation__btn {
-    display: block;
-  }
-  .close {
-    display: none;
-  }
-}
-
-
 `
 
 class Navigation extends Component {
@@ -109,28 +105,70 @@ class Navigation extends Component {
     })
   }
 
-
-
   render() {
     const { isOpen } = this.state
     let toggle = isOpen ? 'open' : 'close';
     return (
 
       <NavigationWrapper>
-        <nav>
+        <nav
+          className="desktop__navigation"
+        >
           <NavItems
-            className={`nav__item`}
+            className="nav__item"
             navClass="wrapper desktop"
             toggleHamburger={this.toggleHamburger}
           />
-          <NavItems
-            className={`${toggle} nav__item`}
-            navClass="wrapper tablet"
-            toggleHamburger={this.toggleHamburger}
-          />
         </nav>
-      </NavigationWrapper >
+        {/* ///////////////////////////////////////////////////////////////////////////////////// */}
+        <nav
+          className="tablet__navigation"
+        >
+          <NavLink
+            to="/"
+            exact
+            activeClassName="active"
+          >Miranda</NavLink>
+          <span
+            className="navigation__btn"
+            onClick={this.toggleHamburger}
+          >x</span>
+        </nav>
+        <div
+          className={`${toggle} nav__wrapper`}
+        >
+          <NavLink
+            to="/"
+            exact
+            activeClassName="active"
+          >Home</NavLink>
+          <NavLink
+            to="/about"
+            activeClassName="active"
+          >About</NavLink>
+          <NavLink
+            to="/menu"
+            activeClassName="active"
+          >Menu</NavLink>
+          <NavLink
+            to="/gallery"
+            activeClassName="active"
+          >Gallery</NavLink>
+          <NavLink
+            to="/reservation"
+            activeClassName="active"
 
+          >Reservations</NavLink>
+          <NavLink
+            to="/location"
+            activeClassName="active"
+          >Location</NavLink>
+        </div>
+
+
+
+        {/* ////////////////////////////////////////////////////////////////////////////////// */}
+      </NavigationWrapper >
     );
   }
 }
