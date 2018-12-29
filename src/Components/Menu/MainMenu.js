@@ -8,6 +8,7 @@ import mainMenu01 from '../../assets/home/mainMenu01.png';
 import mainMenu02 from '../../assets/home/mainMenu02.png';
 import mainMenu03 from '../../assets/home/mainMenu03.png';
 import ornament from '../../assets/home/ornament.png';
+import { device } from '../../Theme/MediaQueries';
 
 const MainMenuWrapper = styled.div`
 
@@ -20,6 +21,9 @@ const MainMenuWrapper = styled.div`
   .menu__flex { 
     display: flex; 
     justify-content: space-between;
+  @media ${device.tablet}{
+    flex-direction: column;
+  }
 
 
     .menu__title { 
@@ -38,6 +42,9 @@ const MainMenuWrapper = styled.div`
   .menu__item .items {
     width: 300px;
     /* border: 1px solid red; */
+    @media ${device.tablet}{
+     width: 100%;
+  }
     margin-bottom: -40px;
       .menu__caption { 
       text-transform: uppercase;

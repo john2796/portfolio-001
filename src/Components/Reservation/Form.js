@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { device } from '../../Theme/MediaQueries';
 
 const FormWrapper = styled.div`
   max-width: 900px;
@@ -8,13 +9,18 @@ const FormWrapper = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
+    @media ${device.tablet}{
+     flex-direction: column;
+    }
   }
   .form__item{
     width:100%;
     max-width: 48.4%;
+    @media ${device.tablet}{
+      max-width: 100%;
+    }
     
     input{       
-    color:red;
     width: 100%;
     margin-bottom: 20px;
     font-family: "Cabin", sans-serif;
@@ -63,7 +69,7 @@ const FormWrapper = styled.div`
 const Form = props => {
   return (
     <FormWrapper>
-      <form>
+      <form className="wrapper">
         <div className="flex__parent_form">
 
           <div className="form__item">
