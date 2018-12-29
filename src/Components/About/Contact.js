@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainSubTitle from '../MainSubTitle';
+import { device } from '../../Theme/MediaQueries';
 
 
 
@@ -23,6 +24,9 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media ${device.tablet}{
+    flex-direction: column;
+  }
 
   .form__item01 {
     width: 50%;
@@ -30,6 +34,10 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    @media ${device.tablet}{
+      width: 100%;
+    }
+
 
    input[type="text"] {
      width: 100%;
@@ -55,6 +63,9 @@ form {
   }
   .form__item02 { 
     width: 47%;
+    @media ${device.tablet}{
+      width: 100%;
+    }
     textarea { 
       width: 100%;
       resize: none;
