@@ -54,7 +54,7 @@ const GalleryWrapper = styled.section`
 
 .gallery__flex__parent { 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   justify-items:center;
 
   @media ${device.tablet}{
@@ -65,19 +65,6 @@ const GalleryWrapper = styled.section`
     cursor: pointer;
   }
 }
-
-
-/* position: relative;
-  &:hover:after {
-    position: absolute;
-    content: 'Testing whatever';
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 1.25rem;
-    background-color: blue;
-    color: white;
-  } */
 `
 
 const images = [
@@ -133,6 +120,7 @@ class Gallery extends Component {
               key={img.id}
               onClick={this.handleClick}
               data-value={img.id}
+              alt="..."
             />
           ))
         }
@@ -151,6 +139,7 @@ class Gallery extends Component {
             data-value={img.id}
             key={img.id}
             onClick={this.handleClick}
+            alt="..."
           />
         ))}
       </div>,
@@ -166,6 +155,7 @@ class Gallery extends Component {
             onClick={this.handleClick}
             data-value={img.id}
             key={img.id}
+            alt="..."
           />
         ))
         }
