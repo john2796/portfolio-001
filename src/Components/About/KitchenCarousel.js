@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import about04 from '../../assets/home/about04.jpg';
 import about05 from '../../assets/home/about05.jpg';
 import about06 from '../../assets/home/about06.jpg';
+import { device } from '../../Theme/MediaQueries';
 
 
 
@@ -22,6 +23,7 @@ width: 89%;
    img { 
      max-width: 100%;
      margin: 0 auto;
+     border: 2px solid green;
    }
 
    .kitchen__left_btn , .kitchen__right_btn {
@@ -57,7 +59,7 @@ width: 89%;
      justify-content: center;
    }
 
-   .kitchen__left_btn { 
+    .kitchen__left_btn { 
     position: absolute;
     top: 40%;
     left: 25px;
@@ -67,14 +69,29 @@ width: 89%;
     position: absolute;
     top: 40%;
     right: 25px;
+   } 
+   @media ${device.tablet}{
+    .button__flex_parent {
+     position: absolute;
+     top: 0;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     height: 88%;
+     border: 2px solid red;
+     /* padding: 0 20px; */
+    }
    }
 
-
-   .carousel__indicators {
+.carousel__indicators {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 20px;
+  @media ${device.tablet}{
+    margin-bottom: 40px;
+  }
 
   li {
     &:nth-of-type(n + 2) {
@@ -105,7 +122,6 @@ width: 89%;
   }
 }  
 `
-
 // Images
 const items = [
   {
@@ -150,13 +166,18 @@ class KitchenCarousel extends Component {
       let computedClass = index === activeIndex ? "slide active" : "slide";
       return (
         <div key={index} className={computedClass}>
-          <img src={images.src} alt="..." />
-          <button className="kitchen__left_btn" onClick={this.previous}>
-            <i className="fas fa-caret-left"></i>
-          </button>
-          <button className="kitchen__right_btn" onClick={this.next}>
-            <i className="fas fa-caret-right"></i>
-          </button>
+          <img
+            src={images.src}
+            alt="..."
+          />
+          <div className="button__flex_parent">
+            <button className="kitchen__left_btn" onClick={this.previous}>
+              <i className="fas fa-caret-left"></i>
+            </button>
+            <button className="kitchen__right_btn" onClick={this.next}>
+              <i className="fas fa-caret-right"></i>
+            </button>
+          </div>
 
           {/* Indicators */}
           <ul className="carousel__indicators">

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 
 
-
 import headerDecorator from '../../assets/home/header_decorator.png'
 import ornament from '../../assets/home/ornament.png'
 import AboutCarousel from './AboutCarousel';
 import KitchenCarousel from './KitchenCarousel';
+import { device } from '../../Theme/MediaQueries';
 
 
 
@@ -40,12 +40,27 @@ const AboutUsWrapper = styled.section`
   }
   .the__history { 
     display: flex;
+    @media ${device.tablet}{
+      flex-direction: column;
+    }
 
     .about__content { 
       width: 70%;
+        @media ${device.tablet}{
+        width: 100%;
+        text-align: center;
+        margin: 50px 0;
+      }
     }
     .about__carousel { 
       width: 80%;
+      @media ${device.tablet}{
+        order: -1;
+        width: 100%;
+        margin: 0 auto;
+        display:flex;
+        justify-content: center;
+     }
     }
   }
 
@@ -53,20 +68,29 @@ const AboutUsWrapper = styled.section`
   .the__kitchens { 
     display: flex;
     margin: 60px 0 130px 0;
+    @media ${device.tablet}{
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+    }
     .kitchens-carousel { 
       width: 80%;
-      
+      @media ${device.tablet}{
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+      }
     }
     .kitchens-content { 
       width: 70%;
+      @media ${device.tablet}{
+        width: 100%;
+        text-align: center;
+      }
     }
   }
-  
-
 `
-
-
-
 class AboutUs extends Component {
   render() {
     return (
