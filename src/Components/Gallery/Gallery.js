@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Testimonials from '../About/Testimonials';
 import styled from 'styled-components'
-
+import { device } from '../../Theme/MediaQueries'
 
 
 
@@ -51,18 +51,46 @@ const GalleryWrapper = styled.section`
   padding-bottom: 150px;
 }
 
+
 .gallery__flex__parent { 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-items:center;
 
-
+  @media ${device.tablet}{
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
   img {
     width: 100%;
+    cursor: pointer;
   }
-
 }
+
+
+/* position: relative;
+  &:hover:after {
+    position: absolute;
+    content: 'Testing whatever';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1.25rem;
+    background-color: blue;
+    color: white;
+  } */
 `
+
+const images = [
+  { id: 1, src: gallery01 },
+  { id: 2, src: gallery02 },
+  { id: 3, src: gallery03 },
+  { id: 4, src: gallery04 },
+  { id: 5, src: gallery05 },
+  { id: 6, src: gallery06 },
+  { id: 7, src: gallery07 },
+  { id: 8, src: gallery08 },
+  { id: 9, src: gallery09 },
+]
 
 
 class Gallery extends Component {
@@ -70,42 +98,63 @@ class Gallery extends Component {
     active: "all"
   }
 
+  handleClick = (event) => {
+    const value = event.target.getAttribute('data-value')
+    console.log(value)
+  }
+
+
   render() {
     const content = {
       all:
         <div className="gallery__flex__parent">
-          <img src={gallery01} alt="..." />
-          <img src={gallery02} alt="..." />
-          <img src={gallery03} alt="..." />
-          <img src={gallery04} alt="..." />
-          <img src={gallery05} alt="..." />
-          <img src={gallery06} alt="..." />
-          <img src={gallery07} alt="..." />
-          <img src={gallery08} alt="..." />
-          <img src={gallery09} alt="..." />
+          {images.map((img, idx) => (
+            <img
+              src={img.src}
+              alt="..."
+              key={idx}
+              data-value={img.id}
+              onClick={this.handleClick}
+            />
+          ))}
         </div>
       ,
       food: <div className="gallery__flex__parent">
-
-        <img src={gallery09} alt="..." />
+        {
+          images.filter((item) => {
+            const filters = {
+              id: [9, 4, 7, 6]
+            }
+            const filterKeys = Object.keys(filters)
+            return filterKeys.every(key => (!!~filters[key].indexOf(item[key])))
+          }).map((img, idx) => (
+            <img
+              src={img.src}
+              key={img.id}
+              onClick={this.handleClick}
+              data-value={img.id}
+            />
+          ))
+        }
+        {/* <img src={gallery09} alt="..." />
         <img src={gallery04} alt="..." />
         <img src={gallery07} alt="..." />
-        <img src={gallery06} alt="..." />
+        <img src={gallery06} alt="..." /> */}
       </div>
       ,
       restaurant: <div className="gallery__flex__parent">
-        <img src={gallery01} alt="..." />
+        {/* <img src={gallery01} alt="..." />
         <img src={gallery02} alt="..." />
         <img src={gallery04} alt="..." />
         <img src={gallery05} alt="..." />
-        <img src={gallery07} alt="..." />
+        <img src={gallery07} alt="..." /> */}
       </div>,
       desserts: <div className="gallery__flex__parent">
-        <img src={gallery03} alt="..." />
+        {/* <img src={gallery03} alt="..." />
         <img src={gallery05} alt="..." />
         <img src={gallery06} alt="..." />
         <img src={gallery07} alt="..." />
-        <img src={gallery08} alt="..." />
+        <img src={gallery08} alt="..." /> */}
       </div>
     }
     const { active } = this.state;
@@ -116,7 +165,6 @@ class Gallery extends Component {
           <p>If a picture says a thousand words, then you can imagine how long it would  <br /> take to describe all our mouthwatering selections.</p>
         </div>
         <div className="gallery">
-
           <Tabs
             active={active}
             onChange={active => this.setState({ active })}
@@ -128,7 +176,9 @@ class Gallery extends Component {
             <span key="desserts">Desserts</span>
           </Tabs>
 
-          <div className="content">{content[active]}</div>
+          <div className="content">
+            {content[active]}
+          </div>
         </div>
         <Testimonials />
       </GalleryWrapper>

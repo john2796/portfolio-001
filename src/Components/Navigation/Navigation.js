@@ -76,12 +76,23 @@ const NavigationWrapper = styled.div`
     display: flex;
     flex-direction: center;
     align-items:center;
+
+    .nav__right {
+      margin-right: 20px
+    }
+    .nav__left{
+     margin-left: 20px
+    }
   }
 .navigation__btn {
   color: white;
   font-size:4rem;
   cursor:pointer;
   display: block;
+
+  i {
+    font-size: 3rem;
+  }
  }
 
  .nav__wrapper {
@@ -103,7 +114,7 @@ const NavigationWrapper = styled.div`
      line-height: 18px;
     padding-bottom: 14px;
     color: #818181;
-    font-weight: 400;
+    font-weight: bold;
     &:hover {
       color: #c0a756;
     }
@@ -151,11 +162,17 @@ class Navigation extends Component {
             to="/"
             exact
             activeClassName="active"
+            className="nav__left"
           >Miranda</NavLink>
           <span
-            className="navigation__btn"
+            className="navigation__btn nav__right"
             onClick={this.toggleHamburger}
-          >x</span>
+          >
+            {!isOpen
+              ? <i className="fas fa-bars"></i>
+              : <i className="fas fa-times"></i>
+            }
+          </span>
         </nav>
         <div
           className={`${toggle} nav__wrapper`}
@@ -180,7 +197,6 @@ class Navigation extends Component {
           <NavLink
             to="/reservation"
             activeClassName="active"
-
           >Reservations</NavLink>
           <NavLink
             to="/location"
