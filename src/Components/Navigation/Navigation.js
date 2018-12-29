@@ -5,11 +5,9 @@ import { NavLink } from 'react-router-dom';
 import NavItems from './NavItems';
 
 const NavigationWrapper = styled.div`
-max-width:90%;
-margin: 0 auto;
 .wrapper { 
   display: flex;
-  align-items:center;  
+  align-items:center; 
 }
 
   nav { 
@@ -45,8 +43,6 @@ margin: 0 auto;
       margin-left: 22px;
     }
     
-    
-
   &:hover { 
     color: var(--gold)!important;
   }
@@ -68,27 +64,54 @@ margin: 0 auto;
 .tablet {
   display: none;
 }
+
+.tablet__navigation{display:none}
+.nav__wrapper{display:none}
+.navigation__btn{display:none}
+
 /* tablet */
 @media ${device.tablet}{
   .desktop__navigation {display: none}
   .tablet__navigation {
     display: flex;
+    flex-direction: center;
     align-items:center;
   }
 .navigation__btn {
   color: white;
   font-size:4rem;
   cursor:pointer;
+  display: block;
  }
+
+ .nav__wrapper {
+   position: absolute;
+    background: rgba(40, 40, 40, 0.9);
+    width: 90%;
+    /* top: 100%; */
+    left: 5%;
+    margin: 0 auto;
+    height: auto;
+  a {
+    width: 100%;
+    display: block;
+     padding: 15px 6px 15px 5px;
+     border-bottom: 1px solid;
+     background-color: transparent;
+     text-shadow: 0px 0px 1px transparent;   
+     font-size: 1.4rem;
+     line-height: 18px;
+    padding-bottom: 14px;
+    color: #818181;
+    font-weight: 400;
+    &:hover {
+      color: #c0a756;
+    }
+  }
+ }
+
  .close{display:none}
-}
-.nav__wrapper {
-  position: absolute;
-  background: gray;
-  color: gray;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+ .open{display:block}
 }
 `
 
@@ -164,9 +187,6 @@ class Navigation extends Component {
             activeClassName="active"
           >Location</NavLink>
         </div>
-
-
-
         {/* ////////////////////////////////////////////////////////////////////////////////// */}
       </NavigationWrapper >
     );
