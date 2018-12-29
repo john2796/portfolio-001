@@ -136,25 +136,39 @@ class Gallery extends Component {
             />
           ))
         }
-        {/* <img src={gallery09} alt="..." />
-        <img src={gallery04} alt="..." />
-        <img src={gallery07} alt="..." />
-        <img src={gallery06} alt="..." /> */}
       </div>
       ,
       restaurant: <div className="gallery__flex__parent">
-        {/* <img src={gallery01} alt="..." />
-        <img src={gallery02} alt="..." />
-        <img src={gallery04} alt="..." />
-        <img src={gallery05} alt="..." />
-        <img src={gallery07} alt="..." /> */}
+        {images.filter((item) => {
+          let filters = {
+            id: [1, 2, 4, 5, 7]
+          }
+          let filterKeys = Object.keys(filters)
+          return filterKeys.every((key) => !!~filters[key].indexOf(item[key]))
+        }).map((img) => (
+          <img
+            src={img.src}
+            data-value={img.id}
+            key={img.id}
+            onClick={this.handleClick}
+          />
+        ))}
       </div>,
       desserts: <div className="gallery__flex__parent">
-        {/* <img src={gallery03} alt="..." />
-        <img src={gallery05} alt="..." />
-        <img src={gallery06} alt="..." />
-        <img src={gallery07} alt="..." />
-        <img src={gallery08} alt="..." /> */}
+        {images.filter((items) => {
+          const filters = { id: [3, 5, 6, 7, 8] }
+          const filterKeys = Object.keys(filters)
+
+          return filterKeys.every(key => !!~filters[key].indexOf(items[key]))
+        }).map(img => (
+          <img
+            src={img.src}
+            onClick={this.handleClick}
+            data-value={img.id}
+            key={img.id}
+          />
+        ))
+        }
       </div>
     }
     const { active } = this.state;
