@@ -1,21 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Contact from '../../Components/About/Contact';
-import MapContainer from '../../Components/About/MapContainer';
-import NotFound from '../NotFound';
-import Footer from '../../Components/Footer/Footer';
-import AboutUs from '../../Components/About/About';
-import Gallery from '../../Components/Gallery/Gallery';
-import Reservation from '../../Components/Reservation/Reservation';
-import Home from '../../Components/Home/Home';
-import MainMenu from '../../Components/Menu/MainMenu';
-import Navigation from '../../Components/Navigation/Navigation';
-import Loaction from '../../Components/Location/Index';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Contact from "../../Components/About/Contact";
+import MapContainer from "../../Components/About/MapContainer";
+import NotFound from "../NotFound";
+import Footer from "../../Components/Footer/Footer";
+import AboutUs from "../../Components/About/About";
+import Gallery from "../../Components/Gallery/Gallery";
+import Reservation from "../../Components/Reservation/Reservation";
+import Home from "../../Components/Home/Home";
+import MainMenu from "../../Components/Menu/MainMenu";
+import Navigation from "../../Components/Navigation/Navigation";
+import Loaction from "../../Components/Location/Index";
 
-
-
-
-const Routes = (props) => {
+const Routes = props => {
   return (
     <Router>
       <div>
@@ -30,13 +27,11 @@ const Routes = (props) => {
           <Route component={NotFound} />
         </Switch>
         <Contact />
-        {/* <MapContainer /> */}
+        <MapContainer />
         <Footer />
       </div>
-
     </Router>
-
   );
-}
+};
 
 export default Routes;
