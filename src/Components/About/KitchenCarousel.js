@@ -12,7 +12,6 @@ const KitchenCarouselWrapper = styled.div`
     display: none;
   }
   .active {
-    /* position: relative; */
     display: block;
   }
   img {
